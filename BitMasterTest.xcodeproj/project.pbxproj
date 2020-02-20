@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D2039AC6C80B1D05303539A /* Pods_BitMasterTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CAC3C39576AA71107BA544 /* Pods_BitMasterTest.framework */; };
 		A539F49523FD985900FC0493 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A539F49423FD985900FC0493 /* MapViewController.m */; };
+		A5B225AD23FE851200155678 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B225AC23FE851200155678 /* Extensions.swift */; };
 		A5ED63EC23FE762E00D0ADB8 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5ED63EB23FE762E00D0ADB8 /* DependencyContainer.swift */; };
 		A5EF58A123FAE67E00A1A5F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF58A023FAE67E00A1A5F3 /* AppDelegate.swift */; };
 		A5EF58A323FAE67E00A1A5F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF58A223FAE67E00A1A5F3 /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 		A539F49223FD985800FC0493 /* BitMasterTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BitMasterTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		A539F49323FD985900FC0493 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		A539F49423FD985900FC0493 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A5B225AC23FE851200155678 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A5ED63EB23FE762E00D0ADB8 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		A5EF589D23FAE67E00A1A5F3 /* BitMasterTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitMasterTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EF58A023FAE67E00A1A5F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		A5B225AB23FE84F000155678 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5B225AC23FE851200155678 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A5EF589423FAE67E00A1A5F3 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 				A5EF58B823FAF5A700A1A5F3 /* Model */,
 				A5EF58BC23FAF72C00A1A5F3 /* View */,
 				A5EF58BF23FAF74E00A1A5F3 /* ViewModel */,
+				A5B225AB23FE84F000155678 /* Extensions */,
 				A5EF58A623FAE67E00A1A5F3 /* Main.storyboard */,
 				A5EF58A923FAE67F00A1A5F3 /* Assets.xcassets */,
 				A5EF58AB23FAE67F00A1A5F3 /* LaunchScreen.storyboard */,
@@ -281,6 +292,7 @@
 				A5ED63EC23FE762E00D0ADB8 /* DependencyContainer.swift in Sources */,
 				A5EF58BB23FAF5DD00A1A5F3 /* ResponseModel.swift in Sources */,
 				A5EF58A323FAE67E00A1A5F3 /* SceneDelegate.swift in Sources */,
+				A5B225AD23FE851200155678 /* Extensions.swift in Sources */,
 				A5EF58C323FAFE2900A1A5F3 /* CellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

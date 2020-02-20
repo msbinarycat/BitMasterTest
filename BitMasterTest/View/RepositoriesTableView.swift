@@ -81,7 +81,11 @@ extension RepositoriesTableView: UISearchBarDelegate {
                         self.tableView.reloadData()
                     }
                 case .failure(let error):
-                    print(error)
+                    DispatchQueue.main.async {
+                        self.navigationItem.searchController?.isActive = false
+                        self.tableView.tableHeaderView = nil
+                        self.showAlertForError(error: "\(error.localizedDescription)")
+                    }
                 }
             }
         }
@@ -89,18 +93,5 @@ extension RepositoriesTableView: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-    }
-}
-
-extension UITableViewController {
-    func setupNavigationBar() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self as? UISearchResultsUpdating
-        searchController.searchBar.delegate = (self as! UISearchBarDelegate)
-        searchController.searchBar.autocapitalizationType = .none
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
     }
 }
