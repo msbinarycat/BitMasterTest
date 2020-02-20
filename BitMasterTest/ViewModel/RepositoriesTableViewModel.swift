@@ -9,8 +9,13 @@
 import Foundation
 
 class RepositoriesTableViewModel {
+    
     private var repositoriesList: [Repository] = []
-    private let apiManager = APIManager()
+    private let apiManager: APIManager
+    
+    init(dependency: DependencyContainer) {
+        self.apiManager = dependency.apiManager
+    }
     
     func numberOfRowsInSection() -> Int? {
         return repositoriesList.count
@@ -19,7 +24,7 @@ class RepositoriesTableViewModel {
     func cellViewModel(for indexPath: IndexPath) -> CellViewModel {
         let repositoryForIndexPath = repositoriesList[indexPath.row]
         
-        return CellViewModel(repository: repositoryForIndexPath)
+        return CellViewModel(repository: repositoryForIndexPath, buttonTag: indexPath.row)
     }
     
     func getRepositoriesForUsername(username: String, completionHandler: @escaping (Result<String, Error>) -> ()) {
@@ -36,5 +41,9 @@ class RepositoriesTableViewModel {
                 }
             }
         }
+    }
+    
+    func getRepository(at index: Int) -> Repository {
+        return repositoriesList[index]
     }
 }

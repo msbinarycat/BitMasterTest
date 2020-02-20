@@ -20,7 +20,7 @@ class CellViewModel {
         return "\(repository.stargazers_count)"
     }
     
-    init(repository: Repository) {
+    init(repository: Repository, buttonTag: Int) {
         self.repository = repository
     }
 }

@@ -3,23 +3,24 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Repositories Table View-->
         <scene sceneID="v48-wd-G2z">
             <objects>
-                <tableViewController id="IAz-cR-8w1" customClass="RepositoriesTableView" customModule="BitMasterTest" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RepositoriesTableView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IAz-cR-8w1" customClass="RepositoriesTableView" customModule="BitMasterTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="m1F-kf-CoJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="ILx-gQ-jtn" customClass="CellView" customModule="BitMasterTest" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="80.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="85.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ILx-gQ-jtn" id="KpK-bA-jCI">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="85.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1Ua-qJ-k26">
@@ -37,6 +38,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cxr-84-x1w">
                                                             <rect key="frame" x="123" y="0.0" width="64" height="30"/>
                                                             <state key="normal" title="На карте"/>
+                                                            <connections>
+                                                                <action selector="onMapButtonTapped:" destination="ILx-gQ-jtn" eventType="touchUpInside" id="lqM-8J-kmm"/>
+                                                            </connections>
                                                         </button>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rhb-gK-UmK">
                                                             <rect key="frame" x="119.5" y="30" width="67.5" height="30"/>
@@ -58,13 +62,14 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="1Ua-qJ-k26" secondAttribute="bottom" id="FCF-o3-P4K"/>
                                         <constraint firstItem="1Ua-qJ-k26" firstAttribute="top" secondItem="KpK-bA-jCI" secondAttribute="top" constant="20" symbolic="YES" id="Lnd-Xh-yTI"/>
                                         <constraint firstAttribute="trailing" secondItem="1Ua-qJ-k26" secondAttribute="trailing" constant="20" symbolic="YES" id="SvI-K5-ecR"/>
                                         <constraint firstItem="1Ua-qJ-k26" firstAttribute="leading" secondItem="KpK-bA-jCI" secondAttribute="leading" constant="20" symbolic="YES" id="ifa-4i-imn"/>
+                                        <constraint firstAttribute="bottom" secondItem="1Ua-qJ-k26" secondAttribute="bottom" constant="5" id="oyx-HS-qVH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="onMapButton" destination="Cxr-84-x1w" id="vJv-3k-ZwC"/>
                                     <outlet property="repositoryName" destination="Wdj-pp-NHR" id="XUx-9k-V3A"/>
                                     <outlet property="starGazersCount" destination="wxv-BU-Zcu" id="29K-Z5-0Ku"/>
                                 </connections>
@@ -76,10 +81,45 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="V2A-mU-mc5"/>
+                    <connections>
+                        <segue destination="ODW-HB-KpG" kind="show" identifier="ShowMapViewController" id="qHu-rq-sRh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRn-eq-gbz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1197.1014492753625" y="162.72321428571428"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="ZyR-Jp-Xm8">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ODW-HB-KpG" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="snP-qF-JQV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNe-VG-gf3" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="806.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TNe-VG-gf3" firstAttribute="leading" secondItem="I6m-sa-vED" secondAttribute="leading" id="CsJ-1W-nm9"/>
+                            <constraint firstItem="TNe-VG-gf3" firstAttribute="top" secondItem="I6m-sa-vED" secondAttribute="top" id="EeZ-cu-qGe"/>
+                            <constraint firstItem="TNe-VG-gf3" firstAttribute="height" secondItem="snP-qF-JQV" secondAttribute="height" multiplier="0.9" id="Fsz-iC-1Oi"/>
+                            <constraint firstItem="TNe-VG-gf3" firstAttribute="trailing" secondItem="I6m-sa-vED" secondAttribute="trailing" id="QYt-G3-BF9"/>
+                            <constraint firstItem="TNe-VG-gf3" firstAttribute="width" secondItem="snP-qF-JQV" secondAttribute="width" id="tV5-k9-dtL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="I6m-sa-vED"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="wcf-uT-LQK"/>
+                    <connections>
+                        <outlet property="mapView" destination="TNe-VG-gf3" id="Bml-2i-t7B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gWd-iu-39a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2060.8695652173915" y="162.72321428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GPd-xN-MyE">

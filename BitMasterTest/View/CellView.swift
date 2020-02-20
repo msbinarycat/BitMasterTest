@@ -13,6 +13,7 @@ class CellView: UITableViewCell {
     // MARK: - @IBOutlets
     @IBOutlet weak var repositoryName: UILabel!
     @IBOutlet weak var starGazersCount: UILabel!
+    @IBOutlet weak var onMapButton: UIButton!
     
     weak var viewModel: CellViewModel? {
         willSet(viewModel) {
@@ -21,6 +22,10 @@ class CellView: UITableViewCell {
             repositoryName.text = viewModel.name
             starGazersCount.text = viewModel.starGazersCount
         }
+    }
+    
+    @IBAction func onMapButtonTapped(_ sender: UIButton) {
+        
     }
     
 }

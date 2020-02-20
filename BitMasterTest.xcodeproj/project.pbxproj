@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2039AC6C80B1D05303539A /* Pods_BitMasterTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CAC3C39576AA71107BA544 /* Pods_BitMasterTest.framework */; };
+		A539F49523FD985900FC0493 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A539F49423FD985900FC0493 /* MapViewController.m */; };
+		A5ED63EC23FE762E00D0ADB8 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5ED63EB23FE762E00D0ADB8 /* DependencyContainer.swift */; };
 		A5EF58A123FAE67E00A1A5F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF58A023FAE67E00A1A5F3 /* AppDelegate.swift */; };
 		A5EF58A323FAE67E00A1A5F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EF58A223FAE67E00A1A5F3 /* SceneDelegate.swift */; };
 		A5EF58A823FAE67E00A1A5F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5EF58A623FAE67E00A1A5F3 /* Main.storyboard */; };
@@ -21,6 +24,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14CAC3C39576AA71107BA544 /* Pods_BitMasterTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitMasterTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AAFD9B699D8FB7749F06051 /* Pods-BitMasterTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitMasterTest.release.xcconfig"; path = "Target Support Files/Pods-BitMasterTest/Pods-BitMasterTest.release.xcconfig"; sourceTree = "<group>"; };
+		A539F49223FD985800FC0493 /* BitMasterTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BitMasterTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		A539F49323FD985900FC0493 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A539F49423FD985900FC0493 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A5ED63EB23FE762E00D0ADB8 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		A5EF589D23FAE67E00A1A5F3 /* BitMasterTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitMasterTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EF58A023FAE67E00A1A5F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5EF58A223FAE67E00A1A5F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +43,7 @@
 		A5EF58C023FAF77F00A1A5F3 /* RepositoriesTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewModel.swift; sourceTree = "<group>"; };
 		A5EF58C223FAFE2900A1A5F3 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		A5EF58C423FB065F00A1A5F3 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
+		EB33CC43B8D56469403CC109 /* Pods-BitMasterTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitMasterTest.debug.xcconfig"; path = "Target Support Files/Pods-BitMasterTest/Pods-BitMasterTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +51,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D2039AC6C80B1D05303539A /* Pods_BitMasterTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6ED64F3F5F7AE7136475C406 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EB33CC43B8D56469403CC109 /* Pods-BitMasterTest.debug.xcconfig */,
+				1AAFD9B699D8FB7749F06051 /* Pods-BitMasterTest.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A539F49123FD982D00FC0493 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				A539F49323FD985900FC0493 /* MapViewController.h */,
+				A539F49423FD985900FC0493 /* MapViewController.m */,
+				A539F49223FD985800FC0493 /* BitMasterTest-Bridging-Header.h */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		A5EF589423FAE67E00A1A5F3 = {
 			isa = PBXGroup;
 			children = (
 				A5EF589F23FAE67E00A1A5F3 /* BitMasterTest */,
 				A5EF589E23FAE67E00A1A5F3 /* Products */,
+				6ED64F3F5F7AE7136475C406 /* Pods */,
+				F0519786F5EBAF5EB4A4F44D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +100,7 @@
 			children = (
 				A5EF58A023FAE67E00A1A5F3 /* AppDelegate.swift */,
 				A5EF58A223FAE67E00A1A5F3 /* SceneDelegate.swift */,
+				A5ED63EB23FE762E00D0ADB8 /* DependencyContainer.swift */,
 				A5EF58B923FAF5B600A1A5F3 /* Services */,
 				A5EF58B823FAF5A700A1A5F3 /* Model */,
 				A5EF58BC23FAF72C00A1A5F3 /* View */,
@@ -99,6 +132,7 @@
 		A5EF58BC23FAF72C00A1A5F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A539F49123FD982D00FC0493 /* Map */,
 				A5EF58B423FAEBA800A1A5F3 /* RepositoriesTableView.swift */,
 				A5EF58C223FAFE2900A1A5F3 /* CellView.swift */,
 			);
@@ -114,6 +148,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F0519786F5EBAF5EB4A4F44D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14CAC3C39576AA71107BA544 /* Pods_BitMasterTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5EF58B123FAE67F00A1A5F3 /* Build configuration list for PBXNativeTarget "BitMasterTest" */;
 			buildPhases = (
+				76563F9210EC299F311BEE4D /* [CP] Check Pods Manifest.lock */,
 				A5EF589923FAE67E00A1A5F3 /* Sources */,
 				A5EF589A23FAE67E00A1A5F3 /* Frameworks */,
 				A5EF589B23FAE67E00A1A5F3 /* Resources */,
+				DCD2E719603FF2412E0A80E5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,6 +190,7 @@
 				TargetAttributes = {
 					A5EF589C23FAE67E00A1A5F3 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -180,6 +225,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		76563F9210EC299F311BEE4D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitMasterTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DCD2E719603FF2412E0A80E5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitMasterTest/Pods-BitMasterTest-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitMasterTest/Pods-BitMasterTest-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitMasterTest/Pods-BitMasterTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A5EF589923FAE67E00A1A5F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -188,8 +275,10 @@
 				A5EF58C123FAF77F00A1A5F3 /* RepositoriesTableViewModel.swift in Sources */,
 				A5EF58B723FAF4DA00A1A5F3 /* APIManager.swift in Sources */,
 				A5EF58C523FB065F00A1A5F3 /* CellViewModel.swift in Sources */,
+				A539F49523FD985900FC0493 /* MapViewController.m in Sources */,
 				A5EF58B523FAEBA800A1A5F3 /* RepositoriesTableView.swift in Sources */,
 				A5EF58A123FAE67E00A1A5F3 /* AppDelegate.swift in Sources */,
+				A5ED63EC23FE762E00D0ADB8 /* DependencyContainer.swift in Sources */,
 				A5EF58BB23FAF5DD00A1A5F3 /* ResponseModel.swift in Sources */,
 				A5EF58A323FAE67E00A1A5F3 /* SceneDelegate.swift in Sources */,
 				A5EF58C323FAFE2900A1A5F3 /* CellView.swift in Sources */,
@@ -334,8 +423,10 @@
 		};
 		A5EF58B223FAE67F00A1A5F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB33CC43B8D56469403CC109 /* Pods-BitMasterTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BitMasterTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -344,6 +435,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = learning.BitMasterTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BitMasterTest/View/Map/BitMasterTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -351,8 +444,10 @@
 		};
 		A5EF58B323FAE67F00A1A5F3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AAFD9B699D8FB7749F06051 /* Pods-BitMasterTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BitMasterTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -361,6 +456,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = learning.BitMasterTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BitMasterTest/View/Map/BitMasterTest-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

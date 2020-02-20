@@ -8,11 +8,15 @@
 
 import Foundation
 
-struct ResponseDescription: Decodable {
-    var response: [Repository]
-}
-
 struct Repository: Decodable {
     var name: String
     var stargazers_count: Int
+    
+    private enum CodingKeys: CodingKey {
+        case name
+        case stargazers_count
+    }
+    
+    var latitude: Double = Double.random(in: -90...90)
+    var longitude: Double = Double.random(in: -180...80)
 }

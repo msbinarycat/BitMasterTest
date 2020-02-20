@@ -28,7 +28,6 @@ class APIManager {
             
             do {
                 let decodedData = try JSONDecoder().decode([Repository].self, from: data)
-                print(decodedData)
                 DispatchQueue.main.async {
                     completionHandler(.success(decodedData))
                 }
