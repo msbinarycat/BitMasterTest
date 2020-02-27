@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct Response: Decodable {
+    var items: [Repository]
+}
+
 struct Repository: Decodable {
     var name: String
     var stargazers_count: Int

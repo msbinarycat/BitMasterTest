@@ -53,7 +53,7 @@ extension RepositoriesTableView: UISearchResultsUpdating {
 extension RepositoriesTableView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let username = searchBar.text {
-            viewModel.getRepositoriesForUsername(username: username) { (result) in
+            viewModel.getRepositoriesForUsername(userString: username) { (result) in
                 switch result {
                 case .success(_):
                     DispatchQueue.main.async {

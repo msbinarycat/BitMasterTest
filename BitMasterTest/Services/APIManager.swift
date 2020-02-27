@@ -11,10 +11,10 @@ import Foundation
 class APIManager {
     
     private let session = URLSession.shared
-    private let defaultUrlString = "https://api.github.com/users/"
+    private let defaultUrlString = "https://api.github.com/search/repositories?q="
     
-    func getRepositoriesList(for username: String, completionHandler: @escaping (Result<[Repository], Error>) -> ()) {
-        let urlStringForUsername = defaultUrlString + "\(username)/repos"
+    func getRepositoriesList(for userString: String, completionHandler: @escaping (Result<[Repository], Error>) -> ()) {
+        let urlStringForUsername = defaultUrlString + "\(userString)"
         guard let url = URL(string:  urlStringForUsername) else { return }
         
         session.dataTask(with: url) { (data, response, error) in
@@ -27,9 +27,9 @@ class APIManager {
             guard let data = data else { return }
             
             do {
-                let decodedData = try JSONDecoder().decode([Repository].self, from: data)
+                let decodedData = try JSONDecoder().decode(Response.self, from: data)
                 DispatchQueue.main.async {
-                    completionHandler(.success(decodedData))
+                    completionHandler(.success(decodedData.items))
                 }
             } catch {
                 DispatchQueue.main.async {

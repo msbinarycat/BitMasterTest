@@ -27,8 +27,8 @@ class RepositoriesTableViewModel {
         return CellViewModel(repository: repositoryForIndexPath)
     }
     
-    func getRepositoriesForUsername(username: String, completionHandler: @escaping (Result<String, Error>) -> ()) {
-        apiManager.getRepositoriesList(for: username) { (result) in
+    func getRepositoriesForUsername(userString: String, completionHandler: @escaping (Result<String, Error>) -> ()) {
+        apiManager.getRepositoriesList(for: userString) { (result) in
             switch result {
             case .success(let reposList):
                 DispatchQueue.main.async {
