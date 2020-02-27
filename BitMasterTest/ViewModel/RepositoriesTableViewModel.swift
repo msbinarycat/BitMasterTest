@@ -24,7 +24,7 @@ class RepositoriesTableViewModel {
     func cellViewModel(for indexPath: IndexPath) -> CellViewModel {
         let repositoryForIndexPath = repositoriesList[indexPath.row]
         
-        return CellViewModel(repository: repositoryForIndexPath, buttonTag: indexPath.row)
+        return CellViewModel(repository: repositoryForIndexPath)
     }
     
     func getRepositoriesForUsername(username: String, completionHandler: @escaping (Result<String, Error>) -> ()) {
