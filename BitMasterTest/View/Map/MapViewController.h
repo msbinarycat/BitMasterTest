@@ -14,8 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MapViewController : UIViewController
 
-@property GMSCameraPosition *camera;
-@property GMSMarker *marker;
+@property double latitude;
+@property double longitude;
+@property NSString *markerTitle;
 
 @end
 

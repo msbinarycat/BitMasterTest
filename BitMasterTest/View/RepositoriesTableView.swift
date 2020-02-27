@@ -17,6 +17,7 @@ class RepositoriesTableView: UITableViewController {
         super.viewDidLoad()
         title = "Repositories List"
         setupNavigationBar()
+        self.definesPresentationContext = true
     }
     
     // MARK: - Table view data source
@@ -33,32 +34,13 @@ class RepositoriesTableView: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CellView
         
         cell.viewModel = viewModel.cellViewModel(for: indexPath)
-        cell.onMapButton.tag = indexPath.row
-        cell.onMapButton.addTarget(self, action: #selector(performSegueFromButtonOnMap(_ :)), for: .touchUpInside)
+        cell.delegate = self
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    @objc func performSegueFromButtonOnMap(_ sender: Any) {
-        if let button = sender as? UIButton {
-            let storyBoard = UIStoryboard(name: "Main", bundle:nil)
-            let mapViewController = storyBoard.instantiateViewController(identifier: "MapViewController") as! MapViewController
-            
-            let repo = viewModel.getRepository(at: button.tag)
-            
-            mapViewController.camera = GMSCameraPosition.camera(withLatitude: repo.latitude, longitude: repo.longitude, zoom: 3)
-            
-            let marker: GMSMarker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: repo.latitude, longitude: repo.longitude)
-            marker.title = "\(repo.stargazers_count)";
-            mapViewController.marker = marker
-            
-            self.navigationController?.pushViewController(mapViewController, animated: true)
-        }
     }
 }
 
@@ -76,7 +58,7 @@ extension RepositoriesTableView: UISearchBarDelegate {
                 case .success(_):
                     DispatchQueue.main.async {
                         self.navigationItem.searchController?.isActive = false
-                        self.navigationItem.searchController?.searchBar.placeholder = username
+                        self.navigationItem.searchController?.searchBar.text = username
                         self.tableView.tableHeaderView = nil
                         self.tableView.reloadData()
                     }
@@ -93,5 +75,26 @@ extension RepositoriesTableView: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
+    }
+}
+
+extension RepositoriesTableView: CellDelegate {
+    func didPressOnMapButton(button: UIButton) {
+        if let tableView = tableView {
+            let point = tableView.convert(button.center, from: button.superview!)
+            
+            if let wantedIndexPath = tableView.indexPathForRow(at: point) {
+                let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+                let mapViewController = storyBoard.instantiateViewController(identifier: "MapViewController") as! MapViewController
+                
+                let repo = viewModel.getRepository(at: wantedIndexPath.row)
+                
+                mapViewController.latitude = repo.latitude
+                mapViewController.longitude = repo.longitude
+                mapViewController.markerTitle = "\(repo.stargazers_count)"
+                
+                self.navigationController?.pushViewController(mapViewController, animated: true)
+            }
+        }
     }
 }

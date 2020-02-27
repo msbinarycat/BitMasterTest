@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol CellDelegate {
+    func didPressOnMapButton(button: UIButton)
+}
+
 class CellView: UITableViewCell {
+    
+    var delegate: CellDelegate!
     
     // MARK: - @IBOutlets
     @IBOutlet weak var repositoryName: UILabel!
@@ -21,11 +27,16 @@ class CellView: UITableViewCell {
             
             repositoryName.text = viewModel.name
             starGazersCount.text = viewModel.starGazersCount
+            onMapButton.addTarget(self, action: #selector(pushMap(_ :)), for: .touchUpInside)
         }
     }
     
     @IBAction func onMapButtonTapped(_ sender: UIButton) {
         
+    }
+    
+    @objc func pushMap(_ sender: UIButton) {
+        delegate.didPressOnMapButton(button: sender)
     }
     
 }

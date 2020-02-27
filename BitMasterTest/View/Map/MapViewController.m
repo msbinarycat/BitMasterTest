@@ -21,9 +21,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.mapView animateToCameraPosition:_camera];
-    _marker.map = _mapView;
-    [_mapView setSelectedMarker:_marker];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_latitude longitude:_longitude zoom:3];
+    [self.mapView animateToCameraPosition: camera];
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = CLLocationCoordinate2DMake(_latitude, _longitude);
+    marker.icon = [self createImage:_markerTitle];
+    marker.map = _mapView;
+}
+
+-(UIImage *)createImage:(NSString*)title{
+    
+    UIColor *color = [UIColor grayColor];
+    NSString *string = [NSString stringWithFormat:@"%@", title];
+    NSDictionary *attrs = @{ NSForegroundColorAttributeName : color };
+    NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:string attributes:attrs];
+    
+    UIImage *image = [UIImage imageNamed:@"mapPin"];
+    UIGraphicsBeginImageContext(image.size);
+    [image drawInRect:CGRectMake(0,0,image.size.width,image.size.height)];
+    
+    CGRect rect = CGRectMake(20,10, image.size.width, image.size.height);
+    [[UIColor whiteColor] set];
+    [attrStr drawInRect:rect];
+    UIImage *markerImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return markerImage;
 }
 
 @end
