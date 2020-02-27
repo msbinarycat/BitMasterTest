@@ -79,22 +79,18 @@ extension RepositoriesTableView: UISearchBarDelegate {
 }
 
 extension RepositoriesTableView: CellDelegate {
-    func didPressOnMapButton(button: UIButton) {
-        if let tableView = tableView {
-            let point = tableView.convert(button.center, from: button.superview!)
+    func didPressOnMapButton(_ cell: CellView) {
+        if let indexPath = self.tableView.indexPath(for: cell) {
+            let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+            let mapViewController = storyBoard.instantiateViewController(identifier: "MapViewController") as! MapViewController
             
-            if let wantedIndexPath = tableView.indexPathForRow(at: point) {
-                let storyBoard = UIStoryboard(name: "Main", bundle:nil)
-                let mapViewController = storyBoard.instantiateViewController(identifier: "MapViewController") as! MapViewController
-                
-                let repo = viewModel.getRepository(at: wantedIndexPath.row)
-                
-                mapViewController.latitude = repo.latitude
-                mapViewController.longitude = repo.longitude
-                mapViewController.markerTitle = "\(repo.stargazers_count)"
-                
-                self.navigationController?.pushViewController(mapViewController, animated: true)
-            }
+            let repo = viewModel.getRepository(at: indexPath.row)
+            
+            mapViewController.latitude = repo.latitude
+            mapViewController.longitude = repo.longitude
+            mapViewController.markerTitle = "\(repo.stargazers_count)"
+            
+            self.navigationController?.pushViewController(mapViewController, animated: true)
         }
     }
 }
