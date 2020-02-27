@@ -14,7 +14,7 @@ class APIManager {
     private let defaultUrlString = "https://api.github.com/search/repositories?q="
     
     func getRepositoriesList(for userString: String, completionHandler: @escaping (Result<[Repository], Error>) -> ()) {
-        let urlStringForUsername = defaultUrlString + "\(userString)"
+        let urlStringForUsername = defaultUrlString + "\(userString)+in%3Aname"
         guard let url = URL(string:  urlStringForUsername) else { return }
         
         session.dataTask(with: url) { (data, response, error) in
