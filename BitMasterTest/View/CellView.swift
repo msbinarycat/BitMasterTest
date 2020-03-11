@@ -8,13 +8,7 @@
 
 import UIKit
 
-protocol CellDelegate {
-    func didPressOnMapButton(_ cell: CellView)
-}
-
 class CellView: UITableViewCell {
-    
-    var delegate: CellDelegate!
     
     // MARK: - @IBOutlets
     @IBOutlet weak var repositoryName: UILabel!
@@ -30,8 +24,10 @@ class CellView: UITableViewCell {
         }
     }
     
+    var buttonAction: ((Any) -> Void)?
+    
     @IBAction func onMapButtonTapped(_ sender: UIButton) {
-        delegate.didPressOnMapButton(self)
+        self.buttonAction?(sender)
     }
     
 }

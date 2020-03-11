@@ -34,7 +34,10 @@ class RepositoriesTableView: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CellView
         
         cell.viewModel = viewModel.cellViewModel(for: indexPath)
-        cell.delegate = self
+        cell.buttonAction = { [weak self] sender in
+            guard let self = self else { return }
+            self.showMapViewController(for: indexPath.row)
+        }
         
         return cell
     }
@@ -42,12 +45,23 @@ class RepositoriesTableView: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func showMapViewController(for index: Int) {
+        let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+        let mapViewController = storyBoard.instantiateViewController(identifier: "MapViewController") as! MapViewController
+        
+        let repo = viewModel.getRepository(at: index)
+        
+        mapViewController.latitude = repo.latitude
+        mapViewController.longitude = repo.longitude
+        mapViewController.markerTitle = "\(repo.stargazers_count)"
+        
+        self.navigationController?.pushViewController(mapViewController, animated: true)
+    }
 }
 
 extension RepositoriesTableView: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
+    func updateSearchResults(for searchController: UISearchController) {}
 }
 
 extension RepositoriesTableView: UISearchBarDelegate {
@@ -73,24 +87,5 @@ extension RepositoriesTableView: UISearchBarDelegate {
         }
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-    }
-}
-
-extension RepositoriesTableView: CellDelegate {
-    func didPressOnMapButton(_ cell: CellView) {
-        if let indexPath = self.tableView.indexPath(for: cell) {
-            let storyBoard = UIStoryboard(name: "Main", bundle:nil)
-            let mapViewController = storyBoard.instantiateViewController(identifier: "MapViewController") as! MapViewController
-            
-            let repo = viewModel.getRepository(at: indexPath.row)
-            
-            mapViewController.latitude = repo.latitude
-            mapViewController.longitude = repo.longitude
-            mapViewController.markerTitle = "\(repo.stargazers_count)"
-            
-            self.navigationController?.pushViewController(mapViewController, animated: true)
-        }
-    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {}
 }
