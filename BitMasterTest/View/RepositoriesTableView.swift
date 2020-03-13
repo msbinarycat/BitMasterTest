@@ -36,7 +36,15 @@ class RepositoriesTableView: UITableViewController {
         cell.viewModel = viewModel.cellViewModel(for: indexPath)
         cell.buttonAction = { [weak self] sender in
             guard let self = self else { return }
-            self.showMapViewController(for: indexPath.row)
+            
+            let storyBoard = UIStoryboard(name: "Main", bundle:nil)
+            let mapViewController = storyBoard.instantiateViewController(identifier: "MapViewController") as! MapViewController
+            
+            mapViewController.latitude = cell.latitude
+            mapViewController.longitude = cell.longitude
+            mapViewController.markerTitle = "\(cell.stars ?? "")"
+            
+            self.navigationController?.pushViewController(mapViewController, animated: true)
         }
         
         return cell
@@ -44,19 +52,6 @@ class RepositoriesTableView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func showMapViewController(for index: Int) {
-        let storyBoard = UIStoryboard(name: "Main", bundle:nil)
-        let mapViewController = storyBoard.instantiateViewController(identifier: "MapViewController") as! MapViewController
-        
-        let repo = viewModel.getRepository(at: index)
-        
-        mapViewController.latitude = repo.latitude
-        mapViewController.longitude = repo.longitude
-        mapViewController.markerTitle = "\(repo.stargazers_count)"
-        
-        self.navigationController?.pushViewController(mapViewController, animated: true)
     }
 }
 

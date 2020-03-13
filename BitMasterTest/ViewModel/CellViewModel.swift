@@ -20,6 +20,14 @@ class CellViewModel {
         return "\(repository.stargazers_count)"
     }
     
+    var latitude: Double {
+        return repository.latitude
+    }
+    
+    var longitude: Double {
+        return repository.longitude
+    }
+    
     init(repository: Repository) {
         self.repository = repository
     }

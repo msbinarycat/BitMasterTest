@@ -15,12 +15,19 @@ class CellView: UITableViewCell {
     @IBOutlet weak var starGazersCount: UILabel!
     @IBOutlet weak var onMapButton: UIButton!
     
+    var latitude: Double!
+    var longitude: Double!
+    var stars: String!
+    
     weak var viewModel: CellViewModel? {
         willSet(viewModel) {
             guard let viewModel = viewModel else { return }
             
             repositoryName.text = viewModel.name
             starGazersCount.text = viewModel.starGazersCount
+            latitude = viewModel.latitude
+            longitude = viewModel.longitude
+            stars = viewModel.starGazersCount
         }
     }
     
